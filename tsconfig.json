@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./out",
+    "outDir": "./dist",
     "rootDir": "./src",
     "target": "esnext",
     "module": "esnext",
@@ -15,10 +15,10 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "types": [
-      "webpack-env",
-      "jest"
-    ],
+//    "types": [
+//      "webpack-env",
+//      "jest"
+//    ],
     "paths": {
       "@/*": [
         "src/*"
@@ -32,11 +32,12 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "src/entities"
+//    "src/**/*.ts",
+//    "src/**/*.tsx",
+//    "src/**/*.vue",
+//    "tests/**/*.ts",
+//    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
