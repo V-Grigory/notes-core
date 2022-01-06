@@ -2,5 +2,5 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ["<rootDir>/src/entities/group"]
+  roots: ["<rootDir>/src/entities/note"]
 };

@@ -1,37 +1,30 @@
-import { IRubric, IRubricData, RUBRICS_MIN_NAME_RU_LENGTH } from './note.types'
+import { INote, INoteData } from './note.types'
 
-export class Rubric implements IRubric {
+export class Note implements INote {
 
   readonly id?: number
-  readonly parent_id: number
-  readonly name_ru: string
-  readonly name_en: string
-  readonly order: number
-  readonly params: object
-  readonly createdAt?: Date | string
+  readonly group_id: number
+  readonly title: string
+  readonly value: string
+  readonly order?: number
+  readonly description?: string
 
-  constructor (data: IRubricData) {
+  constructor (data: INoteData) {
     if (data.id) {
       this.id = data.id
     }
-    this.parent_id = data.parent_id
-    this.name_ru = data.name_ru
-    this.name_en = data.name_en
-    this.order = data.order
-    this.params = data.params
-    if (data.createdAt) {
-      this.createdAt = data.createdAt
-    }
+    this.group_id = data.group_id
+    this.title = data.title
+    this.value = data.value
+    this.order = data.order || undefined
+    this.description = data.description || undefined
   }
 
   validate (): boolean {
-    if (!this.name_ru) {
+    if (!this.group_id || !this.title || !this.value) {
       return false
     }
-    if (this.name_ru.length < RUBRICS_MIN_NAME_RU_LENGTH) {
-      return false
-    }
+
     return true
   }
-
 }

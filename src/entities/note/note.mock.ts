@@ -1,13 +1,12 @@
-import { IRubric, IRubricData } from './note.types'
-import { Rubric } from './note'
-import rubricData from '../../dataProvider/mocks/rubricData'
+import { INoteData } from '@/entities'
+import noteJsonData from '../../dataProvider/mocks/noteData.json'
 
-export const mockRubricsData = (): IRubricData[] => {
-  const mockRubrics: IRubricData[] = []
-  rubricData.forEach((rubric: IRubricData) => mockRubrics.push(rubric))
+const noteTsData = JSON.parse(JSON.stringify(noteJsonData))
+
+export const mockNotesData = (): INoteData[] => {
+  const mockRubrics: INoteData[] = []
+
+  noteTsData.forEach((rubric: INoteData) => mockRubrics.push(rubric))
+
   return mockRubrics
-}
-
-export const mockRubrics = (data: IRubricData[] = mockRubricsData()): IRubric[] => {
-  return data.map(item => new Rubric(item))
 }

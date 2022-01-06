@@ -1,73 +1,94 @@
-import { Rubric } from './note'
-import { mockRubricsData } from './note.mock'
+import { Note } from './note'
+import { mockNotesData } from './note.mock'
 
-describe('>>> Rubric', () => {
+describe('>>> Note', () => {
 
   describe('>> constructor', () => {
 
     it('should instantiate id only if it was provided', () => {
-      const entity1 = new Rubric({
-        ...mockRubricsData()[0],
-        id: 1
+      const entity1 = new Note({
+        ...mockNotesData()[0],
+        id: 7
       })
 
-      expect(entity1.id).toBe(1)
+      expect(entity1.id).toBe(7)
 
-      const entity2 = new Rubric({
-        ...mockRubricsData()[0],
+      const entity2 = new Note({
+        ...mockNotesData()[0],
         id: undefined
       })
 
       expect(entity2.id).toBeUndefined()
     })
 
-    it('should instantiate createdAt only if it was provided', () => {
-      const entity1 = new Rubric({
-        ...mockRubricsData()[0],
-        createdAt: '2019-12-19T11:54:04 +05:00'
+    it('should instantiate order only if it was provided', () => {
+      const entity1 = new Note({
+        ...mockNotesData()[0],
+        order: 5
       })
 
-      expect(entity1.createdAt).toBe('2019-12-19T11:54:04 +05:00')
+      expect(entity1.order).toBe(5)
 
-      const entity2 = new Rubric({
-        ...mockRubricsData()[0],
-        createdAt: undefined
+      const entity2 = new Note({
+        ...mockNotesData()[0],
+        order: undefined
       })
 
-      expect(entity2.createdAt).toBeUndefined()
+      expect(entity2.order).toBeUndefined()
     })
 
+    it('should instantiate description only if it was provided', () => {
+      const entity1 = new Note({
+        ...mockNotesData()[0],
+        description: 'text description'
+      })
+
+      expect(entity1.description).toBe('text description')
+
+      const entity2 = new Note({
+        ...mockNotesData()[0],
+        description: undefined
+      })
+
+      expect(entity2.description).toBeUndefined()
+    })
   })
 
   describe('>> validate', () => {
 
-    it('should fail validation if name_ru is empty', () => {
-      const entity = new Rubric({
-        ...mockRubricsData()[0],
-        name_ru: ''
+    it('should fail validation if group_id is not provided', () => {
+      const entity = new Note({
+        ...mockNotesData()[0],
+        group_id: 0
       })
 
       expect(entity.validate()).toBeFalsy()
     })
 
-    it('should fail validation if name_ru is too short', () => {
-      const entity = new Rubric({
-        ...mockRubricsData()[0],
-        name_ru: 'тт'
+    it('should fail validation if title is not provided', () => {
+      const entity = new Note({
+        ...mockNotesData()[0],
+        title: ''
       })
 
       expect(entity.validate()).toBeFalsy()
     })
 
-    it('should not fail validation if length name_ru is normal', () => {
-      const entity = new Rubric({
-        ...mockRubricsData()[0],
-        name_ru: 'ттт'
+    it('should fail validation if value is not provided', () => {
+      const entity = new Note({
+        ...mockNotesData()[0],
+        value: ''
+      })
+
+      expect(entity.validate()).toBeFalsy()
+    })
+
+    it('should not fail validation', () => {
+      const entity = new Note({
+        ...mockNotesData()[0]
       })
 
       expect(entity.validate()).toBeTruthy()
     })
-
   })
-
 })

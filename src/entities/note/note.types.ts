@@ -10,5 +10,3 @@ export interface INoteData {
 export interface INote extends INoteData {
   validate(): boolean
 }
-
-export const NOTE_NAME_MIN_LENGTH = 3
